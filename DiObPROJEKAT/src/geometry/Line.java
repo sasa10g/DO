@@ -8,7 +8,14 @@ public class Line extends Shape {
 	private Point startPoint;
 	private Point endPoint;
 	
-	public Line(){}
+	public Line(){
+		
+	}
+	
+	public Line(Point startPoint, Point endPoint){
+		this.startPoint = startPoint;
+		this.endPoint = endPoint;
+	}
 	
 	public Line(boolean selected, Color lineColor, Point startPoint, Point endPoint){
 		super(selected, lineColor);

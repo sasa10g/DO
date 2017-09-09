@@ -56,4 +56,12 @@ public class Circle extends SurfaceShape {
 		this.center = center;
 	}
 
+	public int getRadius() {
+		return radius;
+	}
+
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+
 }

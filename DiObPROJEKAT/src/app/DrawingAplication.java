@@ -16,7 +16,6 @@ public class DrawingAplication {
 		DrawingFrame frame = new DrawingFrame();
 		
 		
-		
 		View view = frame.getPnlDrawing();
 		
 		Model model = new Model();
@@ -30,7 +29,6 @@ public class DrawingAplication {
 		
 		frame.setVisible(true);
 		
-
 	}
 
 }

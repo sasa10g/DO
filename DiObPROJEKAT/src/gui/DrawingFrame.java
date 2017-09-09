@@ -22,6 +22,8 @@ import java.awt.GridBagConstraints;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
@@ -54,7 +56,8 @@ public class DrawingFrame extends JFrame {
 	private View pnlDrawing;
 	private Controller controller;
 
-	
+	private Color lineColor = Color.BLACK;
+	private Color fillColor = Color.WHITE;
 	
 
 	/**
@@ -143,6 +146,13 @@ public class DrawingFrame extends JFrame {
 		btnLineColor = new JButton("Line Color");
 		btnLineColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Color current = lineColor;
+				lineColor = JColorChooser.showDialog(null, "Choose line color", lineColor);
+				if(lineColor == null){
+					lineColor = current;
+				}
+				btnLineColor.setBackground(lineColor);
+				btnLineColor.setOpaque(true);
 			}
 		});
 		pnlToolbarTop.add(btnLineColor);
@@ -150,6 +160,13 @@ public class DrawingFrame extends JFrame {
 		btnFillColor = new JButton("Fill Color");
 		btnFillColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Color current = fillColor;
+				fillColor = JColorChooser.showDialog(null, "Choose line color", fillColor);
+				if(fillColor == null){
+					fillColor = current;
+				}
+				btnFillColor.setBackground(fillColor);
+				btnFillColor.setOpaque(true);
 			}
 		});
 		pnlToolbarTop.add(btnFillColor);
@@ -420,6 +437,24 @@ public class DrawingFrame extends JFrame {
 	public void setController(Controller controller) {
 		this.controller = controller;
 	}
+
+	public Color getLineColor() {
+		return lineColor;
+	}
+
+	public void setLineColor(Color lineColor) {
+		this.lineColor = lineColor;
+	}
+
+	public Color getFillColor() {
+		return fillColor;
+	}
+
+	public void setFillColor(Color fillColor) {
+		this.fillColor = fillColor;
+	}
+	
+	
 	
 	// END GETTERS & SETTERS
 

@@ -1,5 +1,6 @@
-/ctrl/
-/app/
-/gui/
-/dialog/
 /geometry/
+/dialog/
+/ctrl/
+/gui/
+/app/
+/composite/
