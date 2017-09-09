@@ -1,6 +1,5 @@
-/app/
-/cmd/
 /ctrl/
-/geometry/
+/app/
 /gui/
-/model/
+/dialog/
+/geometry/

@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ctrl.Controller;
+
 import javax.swing.JToggleButton;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -49,8 +52,11 @@ public class DrawingFrame extends JFrame {
 	private JToggleButton tglbtnSmile;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private View pnlDrawing;
+	private Controller controller;
 
 	
+	
+
 	/**
 	 * Launch the application.
 	 */
@@ -86,6 +92,7 @@ public class DrawingFrame extends JFrame {
 		btnUndo = new JButton("Undo");
 		btnUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.undo();
 			}
 		});
 		pnlToolbarTop.add(btnUndo);
@@ -93,6 +100,7 @@ public class DrawingFrame extends JFrame {
 		btnRedo = new JButton("Redo");
 		btnRedo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.redo();
 			}
 		});
 		pnlToolbarTop.add(btnRedo);
@@ -403,6 +411,14 @@ public class DrawingFrame extends JFrame {
 
 	public void setTglbtnSmile(JToggleButton tglbtnSmile) {
 		this.tglbtnSmile = tglbtnSmile;
+	}
+	
+	public Controller getController() {
+		return controller;
+	}
+
+	public void setController(Controller controller) {
+		this.controller = controller;
 	}
 	
 	// END GETTERS & SETTERS

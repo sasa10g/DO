@@ -23,6 +23,8 @@ public class DrawingAplication {
 		
 		Controller controller = new Controller();
 		controller.setView(view);
+		controller.setFrame(frame);
+		frame.setController(controller); //da bi povezao sa controller zbog metode
 		
 		controller.setModel(model);
 		
