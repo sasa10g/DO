@@ -8,6 +8,7 @@ public class Model {
 	
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
 	private ArrayList<Shape> selectedShapes = new ArrayList<Shape>(); 
+	private ArrayList<String> textLog = new ArrayList<>();
 	private int id = 0;
 	
 	public ArrayList<Shape> getSelectedShapes() {
@@ -17,6 +18,16 @@ public class Model {
 	
 	// START SELEKCIJA
 	
+	public ArrayList<String> getTextLog() {
+		return textLog;
+	}
+
+
+	public void setTextLog(ArrayList<String> textLog) {
+		this.textLog = textLog;
+	}
+
+
 	public void setSelectedShapes(ArrayList<Shape> selectedShapes) {
 		this.selectedShapes = selectedShapes;
 	}
@@ -60,6 +71,28 @@ public class Model {
 		
 	}
 	
+	public void settingId(Shape shape){
+		if(shapes != null){
+			for(Shape s: shapes){
+				if(shape.getId() == s.getId() && !shape.equals(s)){
+					shape.setId(id++);
+					settingId(shape);
+					
+				}
+			}
+		}
+		shape.setIndexed(true);
+		
+	}
+	
+	
+	public void addShape(Shape shape){
+		shapes.add(shape);
+		shape.setIndex(shapes.indexOf(shape));
+		if(!shape.isIndexed()){
+			settingId(shape);
+		}
+	}
 
 	public Model(){}
 	
@@ -68,6 +101,10 @@ public class Model {
 	}
 	
 	public void RemoveShape(Shape shape){
+		shapes.remove(shape);
+	}
+	
+	public void removeShape(Shape shape){
 		shapes.remove(shape);
 	}
 	

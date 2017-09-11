@@ -74,20 +74,16 @@ public class Circle extends SurfaceShape {
 		else
 			JOptionPane.showMessageDialog(null, "Invalid function", "Error",
 					JOptionPane.ERROR_MESSAGE);
-		
-		
-		
+
 		
 	}
 
+	
 	@Override
 	public void moveFor(int x, int y) {
 		// TODO Auto-generated method stub
 		
 			center.moveFor(x, y);
-		
-			
-		
 	}
 	
 		

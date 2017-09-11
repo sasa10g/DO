@@ -2,9 +2,12 @@ package ctrl;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.io.FileFilter;
 import java.util.ArrayList;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import cmd.AddCommand;
 import cmd.CmdChangeColor;
@@ -29,6 +32,8 @@ import geometry.Square;
 import gui.DrawingFrame;
 import gui.View;
 import model.Model;
+import strategy.ContextStrategy;
+import strategy.SerStrategy;
 
 public class Controller {
 
@@ -36,9 +41,15 @@ public class Controller {
 	private View view;
 	private DrawingFrame frame;
 	
-	//private Point startPoint = null;
+	private JFileChooser fileChooser = new JFileChooser();
+	private FileNameExtensionFilter serFilter = new FileNameExtensionFilter("Serializable file", "ser");
+	private int onClick;
+	
 	private Point startPoint, endPoint;
 	
+	public Controller(){
+		fileChooser.addChoosableFileFilter((javax.swing.filechooser.FileFilter) serFilter);
+	}
 	
 	public Point getStartPoint() {
 		return startPoint;
@@ -60,9 +71,7 @@ public class Controller {
 	private ArrayList<Command> undoCommands = new ArrayList(); //lista unduo komandi
 	
 
-	public Controller(){
-		
-	}
+	
 	
 	public void drawShapes(int x, int y){
 		
@@ -324,14 +333,11 @@ public class Controller {
 	public void zBackward(){// moving shape backward z axis
 		CmdZbackward cmdZbackward = new CmdZbackward(model);// initializing command			
 		doCommand(cmdZbackward);
-
 	}
 
 	public void zForward(){ // moving shape forward x axis
 		CmdZforward cmdZbackward = new CmdZforward(model);// initalizing command
 		doCommand(cmdZbackward);
-
-
 	}
 	
 	
@@ -361,6 +367,69 @@ public class Controller {
 			frame.getBtnZbackward().setEnabled(false);// disable z-backward button
 		}
 	}
+	
+	
+	
+	public void save(){// save drawing
+
+		ContextStrategy context = new ContextStrategy();// initializing strategy
+
+		fileChooser.setAcceptAllFileFilterUsed(false);// can't save as all file
+		onClick=fileChooser.showSaveDialog(frame.getPnlDrawing());// show dialog
+		if(onClick==JFileChooser.APPROVE_OPTION) {// if clicked save
+			if(fileChooser.getFileFilter().equals(serFilter)){
+
+				context.setStrategy(new SerStrategy(model, fileChooser));
+				context.saveContext();// save as serialization
+			}
+		}
+	}
+
+	public void load(){// open file
+
+		ContextStrategy context = new ContextStrategy();
+		fileChooser.setFileFilter(fileChooser.getAcceptAllFileFilter());
+		// show all types of file
+
+		onClick=fileChooser.showOpenDialog(frame.getPnlDrawing());// open file dialog
+		if(onClick==JFileChooser.APPROVE_OPTION) {// if clicekd yes
+
+			if(fileChooser.getSelectedFile()!= null){// if file is selecred
+				if(fileChooser.getSelectedFile().getAbsolutePath().toString().endsWith(".ser")) {  
+					//if type of file is serialization
+					
+					context.setStrategy(new SerStrategy(model, fileChooser));
+					context.LoadContext();// open serializable file
+
+
+				}
+				
+				
+			}
+		}
+
+
+	}
+	
+	
+	public void enableModificationBtns(){// enables buttons
+		if(model.getSelectedShapes().size() > 0){// if there are selected shapes
+			frame.getBtnMode().setEnabled(true);// enable modification button
+			frame.getBtnChangeColor().setEnabled(true);// enable button for change color
+			frame.getBtnDelete().setEnabled(true);// enable delete button
+			frame.getBtnLineColor().setEnabled(false);
+			frame.getBtnFillColor().setEnabled(false);
+		}
+		else{
+			frame.getBtnMode().setEnabled(false);// disable modification button
+			frame.getBtnChangeColor().setEnabled(false);// disable button for change color
+			frame.getBtnDelete().setEnabled(false);// disable delete button
+			frame.getBtnLineColor().setEnabled(true);
+			frame.getBtnFillColor().setEnabled(true);
+		}
+
+	}
+	
 	
 	
 	// START GETTERS & SETTERS

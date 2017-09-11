@@ -141,6 +141,11 @@ public class DrawingFrame extends JFrame {
 		btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				controller.save();
+				controller.setEndPoint(null);
+				controller.setStartPoint(null);
+				controller.getView().repaint();
 			}
 		});
 		pnlToolbarTop.add(btnSave);
@@ -148,6 +153,12 @@ public class DrawingFrame extends JFrame {
 		btnLoad = new JButton("Load");
 		btnLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				controller.load();
+				controller.setEndPoint(null);
+				controller.setStartPoint(null);
+				controller.getView().repaint();
+				
 			}
 		});
 		pnlToolbarTop.add(btnLoad);

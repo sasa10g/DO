@@ -2,9 +2,10 @@ package geometry;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Shape {
+public abstract class Shape implements Serializable {
 	
 	protected boolean selected;
 	protected Color lineColor = Color.BLACK;
