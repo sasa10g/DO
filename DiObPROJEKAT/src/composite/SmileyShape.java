@@ -42,17 +42,27 @@ public class SmileyShape extends SurfaceShape implements Component {
 	public void draw(Graphics g) {
 		for(Shape shape: children){
 			shape.draw(g);
-			
+			if(selected){
+				selected(g);
+			}
 		}
 		
 	}
 
 	@Override
 	public boolean contains(int x, int y) {
-		if(head.contains(x, y)){
+		if(children.get(0).contains(x, y)){
 			return true;
 		}
 		return false;
+	}
+	
+	
+	public void selected(Graphics g) {
+		for(Shape selectedShape: children){
+			selectedShape.selected(g);
+		}
+		
 	}
 
 	

@@ -35,6 +35,9 @@ public class Circle extends SurfaceShape {
 			g.drawRect(center.getX(), center.getY()-radius-2, 5, 5);
 			g.drawRect(center.getX(), center.getY()+radius+3, 5, 5);
 		}
+		if (selected) {
+			selected(g);
+		}
 
 	}
 
@@ -47,6 +50,15 @@ public class Circle extends SurfaceShape {
 			return false;
 	}
 
+	
+	public void selected(Graphics g){
+		g.setColor(Color.BLUE);
+		g.drawRect(center.getX()-radius-3, center.getY(), 5, 5);
+		g.drawRect(center.getX()+radius-3, center.getY(), 5, 5);
+		g.drawRect(center.getX(), center.getY()-radius-3, 5, 5);
+		g.drawRect(center.getX(), center.getY()+radius-3, 5, 5);
+	}
+	
 		
 	public Point getCenter() {
 		return center;

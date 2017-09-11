@@ -43,8 +43,9 @@ public class Mouth extends Shape implements Component {
 		p4Y =  head.getCenter().getY();
 		
 		startP1 = new Point(p1X, p1Y);
-		endP1StartP2 = new Point(p2X, p2Y);
-		endP2StartP3 = new Point(p3X, p3Y);
+		endP1StartP2 = new Point(p2X, p2Y+6);
+		//usta
+		endP2StartP3 = new Point(p3X, p3Y+6);
 		endP3 = new Point(p4X, p4Y);
 		
 		leftLine = new Line(startP1, endP1StartP2);
@@ -119,6 +120,13 @@ public class Mouth extends Shape implements Component {
 	}
 	public void setHead(Circle head) {
 		this.head = head;
+	}
+	@Override
+	public void selected(Graphics g) {
+		for (Shape shape:children){
+			shape.selected(g);
+		}
+		
 	}
 
 }

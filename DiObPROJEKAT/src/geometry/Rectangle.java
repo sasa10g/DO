@@ -17,10 +17,10 @@ public class Rectangle extends Square {
 	
 	public void selected(Graphics g) {
 		g.setColor(Color.BLUE);		
-		new Line(selected, fillColor, topLeftPoint, new Point(topLeftPoint.getX()+side, topLeftPoint.getY()));
-		new Line(selected, fillColor, topLeftPoint, new Point(topLeftPoint.getX(), topLeftPoint.getY()+height));
-		new Line(selected, fillColor, new Point(topLeftPoint.getX()+side, topLeftPoint.getY()), diagonal().getEndPoint());
-		new Line(selected, fillColor, new Point(topLeftPoint.getX(), topLeftPoint.getY()+height), diagonal().getEndPoint());
+		new Line(selected, fillColor, topLeftPoint, new Point(topLeftPoint.getX()+side, topLeftPoint.getY())).selected(g);
+		new Line(selected, fillColor, topLeftPoint, new Point(topLeftPoint.getX(), topLeftPoint.getY()+height)).selected(g);
+		new Line(selected, fillColor, new Point(topLeftPoint.getX()+side, topLeftPoint.getY()), diagonal().getEndPoint()).selected(g);
+		new Line(selected, fillColor, new Point(topLeftPoint.getX(), topLeftPoint.getY()+height), diagonal().getEndPoint()).selected(g);
 		
 	}
 	

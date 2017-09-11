@@ -16,16 +16,20 @@ public class View extends JPanel {
 
 	private Controller controller;
 	private Model model;
+	private boolean ctrlPressed;
 	
 	public View(){
 		setBackground(Color.WHITE);
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				int m = e.getModifiers();
+				controller.keyPressed(e.getX(), e.getY(), m);
 				controller.drawShapes(e.getX(), e.getY());
 			}
 		});
 	}
+
 	
 	public void paint(Graphics g){
 		super.paint(g);
@@ -54,5 +58,15 @@ public class View extends JPanel {
 
 	public void setModel(Model model) {
 		this.model = model;
+	}
+
+
+	public boolean isCtrlPressed() {
+		return ctrlPressed;
+	}
+
+
+	public void setCtrlPressed(boolean ctrlPressed) {
+		this.ctrlPressed = ctrlPressed;
 	}
 }

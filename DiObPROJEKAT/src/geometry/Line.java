@@ -26,13 +26,36 @@ public class Line extends Shape {
 	@Override
 	public void draw(Graphics g) {
 		g.drawLine(this.startPoint.getX(), this.startPoint.getY(), this.endPoint.getX(), this.getEndPoint().getY());
-
+		
+		if (selected) {
+			selected(g);
+		}
 	}
 
 	@Override
 	public boolean contains(int x, int y) {
-		// TODO Auto-generated method stub
-		return false;
+		Point point = new Point(x,y);
+		if (size() + 3 > startPoint.distance(point) + endPoint.distance(point))
+			return true;
+		else
+			return false;
+	}
+	
+	public Point middlePoint(){
+		return new Point((startPoint.getX() + endPoint.getX()) / 2,
+				(startPoint.getY() + endPoint.getY()) / 2);
+	}
+	
+	public void selected(Graphics g){
+		g.setColor(Color.BLUE);
+		startPoint.selected(g);
+		endPoint.selected(g);
+		middlePoint().selected(g);
+		
+	}
+	
+	public double size(){
+		return startPoint.distance(endPoint);
 	}
 	
 	public Point getStartPoint() {

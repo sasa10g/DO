@@ -28,10 +28,10 @@ public class Square extends SurfaceShape{
 	public void selected(Graphics g) {
 		g.setColor(Color.BLUE);
 		g.setColor(Color.BLUE);
-		new Line(selected, fillColor, topLeftPoint, new Point(topLeftPoint.getX()+side, topLeftPoint.getY()));
-		new Line(selected, fillColor, topLeftPoint, new Point(topLeftPoint.getX(), topLeftPoint.getY()+side));
-		new Line(selected, fillColor, new Point(topLeftPoint.getX()+side, topLeftPoint.getY()), diagonal().getEndPoint());
-		new Line(selected, fillColor, new Point(topLeftPoint.getX(), topLeftPoint.getY()+side), diagonal().getEndPoint());
+		new Line(selected, fillColor, topLeftPoint, new Point(topLeftPoint.getX()+side, topLeftPoint.getY())).selected(g);
+		new Line(selected, fillColor, topLeftPoint, new Point(topLeftPoint.getX(), topLeftPoint.getY()+side)).selected(g);
+		new Line(selected, fillColor, new Point(topLeftPoint.getX()+side, topLeftPoint.getY()), diagonal().getEndPoint()).selected(g);
+		new Line(selected, fillColor, new Point(topLeftPoint.getX(), topLeftPoint.getY()+side), diagonal().getEndPoint()).selected(g);
 		
 		
 	}
@@ -45,6 +45,8 @@ public class Square extends SurfaceShape{
 			selected(g);
 
 	}
+	
+	
 
 	public boolean contains(int x, int y) {
 		if(x <= topLeftPoint.getX()+side && x > topLeftPoint.getX() &&

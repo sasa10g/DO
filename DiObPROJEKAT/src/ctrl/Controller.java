@@ -1,6 +1,7 @@
 package ctrl;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import cmd.AddCommand;
@@ -16,6 +17,7 @@ import geometry.HexagonAdapter;
 import geometry.Line;
 import geometry.Point;
 import geometry.Rectangle;
+import geometry.Shape;
 import geometry.Square;
 import gui.DrawingFrame;
 import gui.View;
@@ -27,9 +29,26 @@ public class Controller {
 	private View view;
 	private DrawingFrame frame;
 	
-	private Point startPoint = null;
+	//private Point startPoint = null;
+	private Point startPoint, endPoint;
 	
 	
+	public Point getStartPoint() {
+		return startPoint;
+	}
+
+	public void setStartPoint(Point startPoint) {
+		this.startPoint = startPoint;
+	}
+
+	public Point getEndPoint() {
+		return endPoint;
+	}
+
+	public void setEndPoint(Point endPoint) {
+		this.endPoint = endPoint;
+	}
+
 	private ArrayList<Command> commandsList = new ArrayList(); //lista komandi redoslijedom
 	private ArrayList<Command> undoCommands = new ArrayList(); //lista unduo komandi
 	
@@ -39,7 +58,36 @@ public class Controller {
 	}
 	
 	public void drawShapes(int x, int y){
+		
 		if(frame.getTglbtnSelection().isSelected()){
+			
+			for(Shape shape: model.getShapes()){
+				if(shape.contains(x, y) ){// if clicked on shape area
+					if(!view.isCtrlPressed()){//if ctrl is pressed
+
+						selectedShape(shape);// adding to selected shapes list
+
+					}
+					else{
+						if(shape.isSelected()){// if ctrl is pressed and shape is selected
+
+							model.removeShapeFromSelection(shape);// removing from selected shapes list
+						}
+						else{// if ctrl is pressed and shape is not selected
+
+							model.addShapeToSelection(shape);// adding to  selectd shapes list
+						}
+					}
+
+				}
+
+				else if(!view.isCtrlPressed()){// if not clicked on shape area and ctrl is not pressed
+
+					model.removeShapeFromSelection(shape);// removing from selected shapes list
+				}				
+			}
+			view.repaint();
+			
 		}
 		
 		else if(frame.getTglbtnPoint().isSelected()){
@@ -208,6 +256,30 @@ public class Controller {
 		commandsList.add(c);
 		c.execute();
 		view.repaint();
+	}
+	
+	public void keyPressed(int x, int y, int modifiers){// check if ctrl key is pressed
+
+		if((modifiers & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK){
+			view.setCtrlPressed(true);
+		}
+		else
+			view.setCtrlPressed(false);
+
+	}
+	
+	
+	public Shape selectedShape(Shape shape){// allows selection only one shape
+		ArrayList<Shape> localShapes = new ArrayList<>();
+		for(Shape s: model.getSelectedShapes()){
+			if(s.isSelected()){
+				localShapes.add(s);
+			}
+			
+		}
+		model.removeListShapeToSelection(localShapes);
+		model.addShapeToSelection(shape);
+		return shape;
 	}
 	
 	

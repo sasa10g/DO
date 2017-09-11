@@ -210,6 +210,10 @@ public class DrawingFrame extends JFrame {
 		tglbtnSelection = new JToggleButton("Selection");
 		tglbtnSelection.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//controller.enableModificationBtns();
+				controller.setEndPoint(null);
+				controller.setStartPoint(null);
+				controller.getView().repaint();
 			}
 		});
 		buttonGroup.add(tglbtnSelection);

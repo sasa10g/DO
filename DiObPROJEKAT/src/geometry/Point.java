@@ -28,6 +28,9 @@ public class Point extends Shape {
 		g.setColor(lineColor);
 		g.drawLine(x, y-1, x, y+1);
 		g.drawLine(x-1, y, x+1, y);
+		if (selected) {
+			selected(g);
+		}
 
 	}
 
@@ -39,6 +42,17 @@ public class Point extends Shape {
 			return true;
 		else
 			return false;
+	}
+	
+	public Point middlePoint(Point p){
+		double dx = Math.abs(x+p.x)/2;
+		double dy = Math.abs(y+p.y)/2;
+		return new Point((int)dx, (int)dy); 
+	}
+	
+	public void selected(Graphics g){
+		g.setColor(Color.BLUE);
+		g.drawRect(x-2, y-2, 4, 4);
 	}
 
 	public double distance(Point p) {

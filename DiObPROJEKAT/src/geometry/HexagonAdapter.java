@@ -30,7 +30,10 @@ public class HexagonAdapter extends SurfaceShape{
 	@Override
 	public void draw(Graphics g) {
 		hexagon.paint(g);
-		
+	}
+	
+	public void setSelected(boolean selected){
+		hexagon.setSelected(selected);
 	}
 
 	@Override
@@ -53,6 +56,12 @@ public class HexagonAdapter extends SurfaceShape{
 	
 	public void setY(Hexagon hexagon) {
 		this.hexagon = hexagon;
+	}
+
+	@Override
+	public void selected(Graphics g) { //hexakog ima svoju metodu za slekeciju
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
