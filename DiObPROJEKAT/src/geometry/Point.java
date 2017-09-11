@@ -62,6 +62,25 @@ public class Point extends Shape {
 		
 	}
 	
+	@Override
+	public void moveOn(int x, int y) {
+	// TODO Auto-generated 
+		movedOnX = this.x;
+		movedOnY = this.y;
+		
+		this.x = x;
+		this.y = y;
+
+	}
+	
+	@Override
+	public void moveFor(int x, int y) {
+		// TODO Auto-generated method stub		
+			this.x +=x;
+			this.y +=y;
+			
+	}
+	
 	public int getX() {
 		return x;
 	}

@@ -122,6 +122,7 @@ public class DrawingFrame extends JFrame {
 		btnMode = new JButton("Mode");
 		btnMode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.moveShape();
 			}
 		});
 		pnlToolbarTop.add(btnMode);

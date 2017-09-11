@@ -3,6 +3,8 @@ package geometry;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.swing.JOptionPane;
+
 public class Line extends Shape {
 
 	private Point startPoint;
@@ -53,6 +55,36 @@ public class Line extends Shape {
 		middlePoint().selected(g);
 		
 	}
+	
+	@Override
+	public void moveOn(int x, int y) {
+		// TODO Auto-generated method stub
+		int moveX = endPoint.getX()-(startPoint.getX()-x);
+		int moveY = endPoint.getY()-(startPoint.getY()-y);
+		if(x > 0 && y > 0 && moveX > 0 && moveY > 0){
+			
+			movedOnX = this.startPoint.getX();
+			movedOnY = this.startPoint.getY();
+			
+			endPoint.moveOn(moveX, moveY);
+			startPoint.moveOn(x, y);
+		}
+		else
+		JOptionPane.showMessageDialog(null, "Invalid function", "Error",
+				JOptionPane.ERROR_MESSAGE);
+		
+		
+	}
+
+	@Override
+	public void moveFor(int x, int y) {
+		// TODO Auto-generated method stub
+		
+			startPoint.moveFor(x, y);
+			endPoint.moveFor(x, y);
+
+	}
+	
 	
 	public double size(){
 		return startPoint.distance(endPoint);

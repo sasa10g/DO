@@ -3,6 +3,8 @@ package geometry;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.swing.JOptionPane;
+
 public class Circle extends SurfaceShape {
 
 	private int radius;
@@ -57,6 +59,35 @@ public class Circle extends SurfaceShape {
 		g.drawRect(center.getX()+radius-3, center.getY(), 5, 5);
 		g.drawRect(center.getX(), center.getY()-radius-3, 5, 5);
 		g.drawRect(center.getX(), center.getY()+radius-3, 5, 5);
+	}
+	
+	
+	@Override
+	public void moveOn(int x, int y) {
+		// TODO Auto-generated method stub
+		if(x > 0 && y > 0){
+			movedOnX = this.center.getX();
+			movedOnY = this.center.getY();
+			
+			center.moveOn(x, y);
+		}
+		else
+			JOptionPane.showMessageDialog(null, "Invalid function", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		
+		
+		
+		
+	}
+
+	@Override
+	public void moveFor(int x, int y) {
+		// TODO Auto-generated method stub
+		
+			center.moveFor(x, y);
+		
+			
+		
 	}
 	
 		

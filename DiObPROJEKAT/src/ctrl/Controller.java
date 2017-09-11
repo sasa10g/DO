@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import cmd.AddCommand;
 import cmd.CmdDelete;
+import cmd.CmdMode;
 import cmd.Command;
 import composite.Mouth;
 import composite.SmileyShape;
@@ -293,6 +294,17 @@ public class Controller {
 			doCommand(cmdDelete);
 			
 		}
+	}
+	
+	
+	public void moveShape(){// enables shapes modification
+
+		CmdMode cmdMove = new CmdMode(model);// initializing command
+		if(cmdMove.getDialog().isSuccess()){//if all input is valid: do command
+			doCommand(cmdMove);
+			view.repaint();
+		}		
+
 	}
 	
 	

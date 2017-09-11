@@ -63,5 +63,19 @@ public class HexagonAdapter extends SurfaceShape{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void moveFor(int x, int y) {
+		hexagon.setX(hexagon.getX()+x);
+		hexagon.setY(hexagon.getY()+y);
+		
+	}
+
+	@Override
+	public void moveOn(int x, int y) {
+		hexagon.setX(x);
+		hexagon.setY(y);
+		
+	}
 	
 }

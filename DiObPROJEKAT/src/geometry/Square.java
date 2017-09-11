@@ -3,6 +3,8 @@ package geometry;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.swing.JOptionPane;
+
 
 public class Square extends SurfaceShape{
 
@@ -82,7 +84,7 @@ public class Square extends SurfaceShape{
 		this.side = side;
 	}
 
-	/*@Override
+	@Override
 	public void moveOn(int x, int y) {
 		// TODO Auto-generated method stub
 		if(x > 0 && y > 0){
@@ -96,20 +98,14 @@ public class Square extends SurfaceShape{
 					JOptionPane.ERROR_MESSAGE);
 
 	}
-*/
-/*	@Override
+
+	@Override
 	public void moveFor(int x, int y) {
 		
 			topLeftPoint.moveFor(x, y);
 	
 	}
-*/
-/*	@Override
-	public String txtToString() {
-		
-		return topLeftPoint.getX()+","+topLeftPoint.getY()+","
-				 +Integer.toString(side) +","+ lineColor.getRGB()+ "," + fillColor.getRGB();
-	}*/
+
 
 	
 

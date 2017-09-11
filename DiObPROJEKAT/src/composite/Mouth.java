@@ -43,9 +43,9 @@ public class Mouth extends Shape implements Component {
 		p4Y =  head.getCenter().getY();
 		
 		startP1 = new Point(p1X, p1Y);
-		endP1StartP2 = new Point(p2X, p2Y+6);
+		endP1StartP2 = new Point(p2X, p2Y);
 		//usta
-		endP2StartP3 = new Point(p3X, p3Y+6);
+		endP2StartP3 = new Point(p3X, p3Y);
 		endP3 = new Point(p4X, p4Y);
 		
 		leftLine = new Line(startP1, endP1StartP2);
@@ -89,7 +89,7 @@ public class Mouth extends Shape implements Component {
 		return false;
 	}
 
-/*
+
 	@Override
 	public void moveOn(int x, int y) {
 		leftLine.moveOn( (int)(head.getCenter().getX() - head.getRadius()* p), head.getCenter().getY());
@@ -108,7 +108,7 @@ public class Mouth extends Shape implements Component {
 		
 	}
 	
-*/
+	
 	public ArrayList<Shape> getChildren() {
 		return children;
 	}

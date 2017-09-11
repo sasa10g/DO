@@ -70,7 +70,7 @@ public class SmileyShape extends SurfaceShape implements Component {
 		return head.toString();
 	}
 
-/*
+
 	@Override
 	public void moveOn(int x, int y) {
 		
@@ -93,7 +93,7 @@ public class SmileyShape extends SurfaceShape implements Component {
 		}
 		
 	}
-*/
+
 
 	public ArrayList<Shape> getChildren() {
 		return children;
