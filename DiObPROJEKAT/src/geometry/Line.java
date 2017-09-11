@@ -27,6 +27,7 @@ public class Line extends Shape {
 	
 	@Override
 	public void draw(Graphics g) {
+		g.setColor(lineColor);
 		g.drawLine(this.startPoint.getX(), this.startPoint.getY(), this.endPoint.getX(), this.getEndPoint().getY());
 		
 		if (selected) {
@@ -58,7 +59,6 @@ public class Line extends Shape {
 	
 	@Override
 	public void moveOn(int x, int y) {
-		// TODO Auto-generated method stub
 		int moveX = endPoint.getX()-(startPoint.getX()-x);
 		int moveY = endPoint.getY()-(startPoint.getY()-y);
 		if(x > 0 && y > 0 && moveX > 0 && moveY > 0){
@@ -78,8 +78,6 @@ public class Line extends Shape {
 
 	@Override
 	public void moveFor(int x, int y) {
-		// TODO Auto-generated method stub
-		
 			startPoint.moveFor(x, y);
 			endPoint.moveFor(x, y);
 

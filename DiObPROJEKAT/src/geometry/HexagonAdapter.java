@@ -78,4 +78,21 @@ public class HexagonAdapter extends SurfaceShape{
 		
 	}
 	
+	
+	public Color getLineColor(){
+		return hexagon.getBorderColor();
+	}
+	
+	public void setLineColor(Color lineColor){
+		hexagon.setBorderColor(lineColor);
+	}
+	
+	public Color getFillColor(){
+		return hexagon.getAreaColor();
+	}
+	
+	public void setFillColor(Color fillColor){
+		hexagon.setAreaColor(fillColor);
+	}
+	
 }

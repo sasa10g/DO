@@ -64,7 +64,6 @@ public class Point extends Shape {
 	
 	@Override
 	public void moveOn(int x, int y) {
-	// TODO Auto-generated 
 		movedOnX = this.x;
 		movedOnY = this.y;
 		
@@ -74,8 +73,7 @@ public class Point extends Shape {
 	}
 	
 	@Override
-	public void moveFor(int x, int y) {
-		// TODO Auto-generated method stub		
+	public void moveFor(int x, int y) {	
 			this.x +=x;
 			this.y +=y;
 			

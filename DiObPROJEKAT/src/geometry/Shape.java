@@ -2,6 +2,7 @@ package geometry;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public abstract class Shape {
 	
@@ -9,9 +10,18 @@ public abstract class Shape {
 	protected Color lineColor = Color.BLACK;
 	protected int movedOnX;
 	protected int movedOnY;
+	private ArrayList<Color> changedLineColorList = new ArrayList<Color>();
 	
 	public int getMovedOnX() {
 		return movedOnX;
+	}
+
+	public ArrayList<Color> getChangedLineColorList() {
+		return changedLineColorList;
+	}
+
+	public void setChangedLineColorList(ArrayList<Color> changedLineColorList) {
+		this.changedLineColorList = changedLineColorList;
 	}
 
 	public void setMovedOnX(int movedOnX) {
@@ -26,11 +36,18 @@ public abstract class Shape {
 		this.movedOnY = movedOnY;
 	}
 
-	public Shape(){}
+	public Shape(){
+		
+	}
 	
 	public Shape(boolean selected, Color lineColor){
 		this.selected = selected;
 		this.lineColor = lineColor;
+	}
+	
+	public String lineColorToString(){
+		return  "Line Color >> " + "Red: "+ lineColor.getRed() + " Blue: " + lineColor.getBlue()
+		+ " Green: "+ lineColor.getGreen();
 	}
 	
 	public abstract void draw(Graphics g);

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import cmd.AddCommand;
+import cmd.CmdChangeColor;
 import cmd.CmdDelete;
 import cmd.CmdMode;
 import cmd.Command;
@@ -304,6 +305,16 @@ public class Controller {
 			doCommand(cmdMove);
 			view.repaint();
 		}		
+
+	}
+	
+	
+	public void changeShapeColor(){	// enables shapes to change color
+		CmdChangeColor cmdChangeColor = new CmdChangeColor(model);// initializing command					
+		if(cmdChangeColor.getDialog().isSucssess()){// if all input is valid
+			doCommand(cmdChangeColor);
+
+		}
 
 	}
 	

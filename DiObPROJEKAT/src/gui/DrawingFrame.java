@@ -130,6 +130,10 @@ public class DrawingFrame extends JFrame {
 		btnChangeColor = new JButton("Change Color");
 		btnChangeColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.changeShapeColor();
+				controller.setEndPoint(null);
+				controller.setStartPoint(null);
+				controller.getView().repaint();
 			}
 		});
 		pnlToolbarTop.add(btnChangeColor);

@@ -142,7 +142,7 @@ public class SmileyShape extends SurfaceShape implements Component {
 	}
 	
 	public Color getLineColor(){
-		return head.getLineColor();
+		return children.get(0).getLineColor();
 	}
 	
 	public void setLineColor(Color lineColor){
@@ -152,11 +152,11 @@ public class SmileyShape extends SurfaceShape implements Component {
 	}
 	
 	public Color getFillColor(){
-		return head.getFillColor();
+		return ((SurfaceShape) children.get(0)).getFillColor();
 	}
 	
 	public void setFillColor(Color fillColor){
-		head.setFillColor(fillColor);
+		((SurfaceShape) children.get(0)).setFillColor(fillColor);
 	
 	}
 
