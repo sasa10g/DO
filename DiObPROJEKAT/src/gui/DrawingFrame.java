@@ -111,6 +111,10 @@ public class DrawingFrame extends JFrame {
 		btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.delete();
+				controller.setEndPoint(null);
+				controller.setStartPoint(null);
+				controller.getView().repaint();
 			}
 		});
 		pnlToolbarTop.add(btnDelete);
@@ -299,6 +303,7 @@ public class DrawingFrame extends JFrame {
 	}
 
 	public JButton getBtnDelete() {
+		
 		return btnDelete;
 	}
 

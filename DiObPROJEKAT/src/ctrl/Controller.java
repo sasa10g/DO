@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import cmd.AddCommand;
+import cmd.CmdDelete;
 import cmd.Command;
 import composite.Mouth;
 import composite.SmileyShape;
@@ -280,6 +283,16 @@ public class Controller {
 		model.removeListShapeToSelection(localShapes);
 		model.addShapeToSelection(shape);
 		return shape;
+	}
+	
+	public void delete() {
+		int delete = JOptionPane.showConfirmDialog(null,  "Are you sure?", "Delete",
+				JOptionPane.YES_NO_OPTION); //shows confirm dialog
+		if (delete == JOptionPane.YES_OPTION){
+			CmdDelete cmdDelete = new CmdDelete(model);
+			doCommand(cmdDelete);
+			
+		}
 	}
 	
 	
