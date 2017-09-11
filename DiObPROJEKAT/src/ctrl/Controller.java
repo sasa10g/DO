@@ -10,6 +10,8 @@ import cmd.AddCommand;
 import cmd.CmdChangeColor;
 import cmd.CmdDelete;
 import cmd.CmdMode;
+import cmd.CmdZbackward;
+import cmd.CmdZforward;
 import cmd.Command;
 import composite.Mouth;
 import composite.SmileyShape;
@@ -318,6 +320,47 @@ public class Controller {
 
 	}
 	
+	
+	public void zBackward(){// moving shape backward z axis
+		CmdZbackward cmdZbackward = new CmdZbackward(model);// initializing command			
+		doCommand(cmdZbackward);
+
+	}
+
+	public void zForward(){ // moving shape forward x axis
+		CmdZforward cmdZbackward = new CmdZforward(model);// initalizing command
+		doCommand(cmdZbackward);
+
+
+	}
+	
+	
+	public void enableBtnsZord(){
+
+		if(model.getSelectedShapes().size() == 1 && model.getShapes().size() > 1){
+			//if only one shape is selected and if there are at least two shapes drown
+
+
+			if(model.getShapes().get(0).isSelected()){// if first drawned shape is selected
+				frame.getBtnZforward().setEnabled(false);// disable button z-forward
+			}
+			else{
+				frame.getBtnZforward().setEnabled(true);// enable button z-forward
+			}
+			if(model.getShapes().get(model.getShapes().size()-1).isSelected()){
+				//if last drawned shape is selected
+				frame.getBtnZbackward().setEnabled(false);// disable button z-backward
+			}
+			else{
+				frame.getBtnZbackward().setEnabled(true);// enable button z-backward
+			}
+
+		}
+		else{
+			frame.getBtnZforward().setEnabled(false);// disable z-forward button
+			frame.getBtnZbackward().setEnabled(false);// disable z-backward button
+		}
+	}
 	
 	
 	// START GETTERS & SETTERS

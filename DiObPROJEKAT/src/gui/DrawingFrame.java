@@ -183,15 +183,25 @@ public class DrawingFrame extends JFrame {
 		btnZforward = new JButton("zForward");
 		btnZforward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.zForward();
+				controller.setEndPoint(null);
+				controller.setStartPoint(null);
+				controller.getView().repaint();
 			}
 		});
+		btnZforward.setToolTipText("Z-forward");
 		pnlToolbarTop.add(btnZforward);
 		
 		btnZbackward = new JButton("zBackward");
 		btnZbackward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.zBackward();
+				controller.setEndPoint(null);
+				controller.setStartPoint(null);
+				controller.getView().repaint();
 			}
 		});
+		btnZbackward.setToolTipText("Z-backward");
 		pnlToolbarTop.add(btnZbackward);
 		
 		

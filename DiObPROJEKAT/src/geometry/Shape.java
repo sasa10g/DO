@@ -10,8 +10,35 @@ public abstract class Shape {
 	protected Color lineColor = Color.BLACK;
 	protected int movedOnX;
 	protected int movedOnY;
+	private boolean indexed;
+	private int index;
+	private int id;
 	private ArrayList<Color> changedLineColorList = new ArrayList<Color>();
 	
+	public boolean isIndexed() {
+		return indexed;
+	}
+
+	public void setIndexed(boolean indexed) {
+		this.indexed = indexed;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public int getMovedOnX() {
 		return movedOnX;
 	}

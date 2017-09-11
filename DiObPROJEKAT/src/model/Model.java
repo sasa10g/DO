@@ -8,6 +8,7 @@ public class Model {
 	
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
 	private ArrayList<Shape> selectedShapes = new ArrayList<Shape>(); 
+	private int id = 0;
 	
 	public ArrayList<Shape> getSelectedShapes() {
 		return selectedShapes;
@@ -47,6 +48,17 @@ public class Model {
 	
 	// END SELEKCIJA
 	
+	public void addShapeIndexOf(Shape shape){
+		shapes.add(shape.getIndex(), shape);
+		
+	}
+	
+	public void addListShapeIndexOf(ArrayList<Shape> shapes){
+		for(Shape shape: shapes){
+			addShapeIndexOf(shape);
+		}
+		
+	}
 	
 
 	public Model(){}
