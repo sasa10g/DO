@@ -27,6 +27,8 @@ import javax.swing.JColorChooser;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class DrawingFrame extends JFrame {
 
@@ -80,8 +82,9 @@ public class DrawingFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public DrawingFrame() {
+		setTitle("Dizajnerski obrazci 16/17");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1033, 540);
+		setBounds(100, 100, 946, 540);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -93,6 +96,7 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarTop.setLayout(new BoxLayout(pnlToolbarTop, BoxLayout.X_AXIS));
 		
 		btnUndo = new JButton("Undo");
+		btnUndo.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/undo.png"));
 		btnUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.undo();
@@ -101,6 +105,7 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarTop.add(btnUndo);
 		
 		btnRedo = new JButton("Redo");
+		btnRedo.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/redo.png"));
 		btnRedo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.redo();
@@ -109,6 +114,7 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarTop.add(btnRedo);
 		
 		btnDelete = new JButton("Delete");
+		btnDelete.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/delete.png"));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.delete();
@@ -120,6 +126,7 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarTop.add(btnDelete);
 		
 		btnMode = new JButton("Mode");
+		btnMode.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/move.png"));
 		btnMode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.moveShape();
@@ -128,6 +135,7 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarTop.add(btnMode);
 		
 		btnChangeColor = new JButton("Change Color");
+		btnChangeColor.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/changeColor.png"));
 		btnChangeColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.changeShapeColor();
@@ -138,32 +146,8 @@ public class DrawingFrame extends JFrame {
 		});
 		pnlToolbarTop.add(btnChangeColor);
 		
-		btnSave = new JButton("Save");
-		btnSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				controller.save();
-				controller.setEndPoint(null);
-				controller.setStartPoint(null);
-				controller.getView().repaint();
-			}
-		});
-		pnlToolbarTop.add(btnSave);
-		
-		btnLoad = new JButton("Load");
-		btnLoad.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				controller.load();
-				controller.setEndPoint(null);
-				controller.setStartPoint(null);
-				controller.getView().repaint();
-				
-			}
-		});
-		pnlToolbarTop.add(btnLoad);
-		
 		btnLineColor = new JButton("Line Color");
+		btnLineColor.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/lineColor.png"));
 		btnLineColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Color current = lineColor;
@@ -178,6 +162,7 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarTop.add(btnLineColor);
 		
 		btnFillColor = new JButton("Fill Color");
+		btnFillColor.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/fillColor.png"));
 		btnFillColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Color current = fillColor;
@@ -192,6 +177,7 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarTop.add(btnFillColor);
 		
 		btnZforward = new JButton("zForward");
+		btnZforward.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/zForward.png"));
 		btnZforward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.zForward();
@@ -200,10 +186,38 @@ public class DrawingFrame extends JFrame {
 				controller.getView().repaint();
 			}
 		});
+		
+		btnSave = new JButton("Save");
+		btnSave.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/saving.png"));
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controller.save();
+				controller.setEndPoint(null);
+				controller.setStartPoint(null);
+				controller.getView().repaint();
+			}
+		});
+		
+		btnLoad = new JButton("Load");
+		btnLoad.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/open.png"));
+		btnLoad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				controller.load();
+				controller.setEndPoint(null);
+				controller.setStartPoint(null);
+				controller.getView().repaint();
+				
+			}
+		});
+		pnlToolbarTop.add(btnLoad);
+		pnlToolbarTop.add(btnSave);
 		btnZforward.setToolTipText("Z-forward");
 		pnlToolbarTop.add(btnZforward);
 		
 		btnZbackward = new JButton("zBackward");
+		btnZbackward.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/zBackward.png"));
 		btnZbackward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.zBackward();
@@ -219,10 +233,12 @@ public class DrawingFrame extends JFrame {
 		
 		
 		JPanel pnlToolbarLeft = new JPanel();
-		pnlToolbarLeft.setBackground(UIManager.getColor("ToggleButton.background"));
+		pnlToolbarLeft.setBackground(UIManager.getColor("Button.background"));
 		contentPane.add(pnlToolbarLeft, BorderLayout.WEST);
 		
 		tglbtnPoint = new JToggleButton("Point");
+		tglbtnPoint.setHorizontalAlignment(SwingConstants.LEFT);
+		tglbtnPoint.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/shapes/point.png"));
 		tglbtnPoint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -230,6 +246,8 @@ public class DrawingFrame extends JFrame {
 		buttonGroup.add(tglbtnPoint);
 		
 		tglbtnLine = new JToggleButton("Line");
+		tglbtnLine.setHorizontalAlignment(SwingConstants.LEFT);
+		tglbtnLine.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/shapes/line.png"));
 		tglbtnLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -238,6 +256,8 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarLeft.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		tglbtnSelection = new JToggleButton("Selection");
+		tglbtnSelection.setHorizontalAlignment(SwingConstants.LEFT);
+		tglbtnSelection.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/shapes/selection.png"));
 		tglbtnSelection.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//controller.enableModificationBtns();
@@ -255,6 +275,8 @@ public class DrawingFrame extends JFrame {
 		
 		
 		tglbtnCircle = new JToggleButton("Circle");
+		tglbtnCircle.setHorizontalAlignment(SwingConstants.LEFT);
+		tglbtnCircle.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/shapes/circle.png"));
 		tglbtnCircle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -263,6 +285,8 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarLeft.add(tglbtnCircle);
 		
 		tglbtnSquare = new JToggleButton("Square");
+		tglbtnSquare.setHorizontalAlignment(SwingConstants.LEFT);
+		tglbtnSquare.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/shapes/square.png"));
 		tglbtnSquare.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -271,6 +295,8 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarLeft.add(tglbtnSquare);
 		
 		tglbtnRectangle = new JToggleButton("Rectangle");
+		tglbtnRectangle.setHorizontalAlignment(SwingConstants.LEFT);
+		tglbtnRectangle.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/shapes/rectangle.png"));
 		tglbtnRectangle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -279,6 +305,8 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarLeft.add(tglbtnRectangle);
 		
 		tglbtnHexagon = new JToggleButton("Hexagon");
+		tglbtnHexagon.setHorizontalAlignment(SwingConstants.LEFT);
+		tglbtnHexagon.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/shapes/hexagon.png"));
 		tglbtnHexagon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -287,6 +315,8 @@ public class DrawingFrame extends JFrame {
 		pnlToolbarLeft.add(tglbtnHexagon);
 		
 		tglbtnSmile = new JToggleButton("Smile");
+		tglbtnSmile.setHorizontalAlignment(SwingConstants.LEFT);
+		tglbtnSmile.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/shapes/smiley.png"));
 		tglbtnSmile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

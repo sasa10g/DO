@@ -100,4 +100,9 @@ public abstract class Shape implements Serializable {
 	public void setLineColor(Color lineColor) {
 		this.lineColor = lineColor;
 	}
+
+	public Point getCenter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
