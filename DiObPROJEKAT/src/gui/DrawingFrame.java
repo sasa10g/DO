@@ -75,7 +75,7 @@ public class DrawingFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public DrawingFrame() {
-		setTitle("Dizajnerski obrazci 16/17");
+		setTitle("Dizajnerski obrasci IT62 (2016/17)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 946, 540);
 		contentPane = new JPanel();
