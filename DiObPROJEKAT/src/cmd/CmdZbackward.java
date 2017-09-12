@@ -27,8 +27,6 @@ public class CmdZbackward implements Command {
 		for(Shape shape: shapesForZOrder){
 			if(shape.getIndex() < model.getShapes().size()){
 				shape.setIndex(shape.getIndex()+1);
-				
-				String s = shape.getClass().getSimpleName().toString();
 			}		
 		}
 		

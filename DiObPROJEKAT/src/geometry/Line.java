@@ -80,7 +80,6 @@ public class Line extends Shape {
 	public void moveFor(int x, int y) {
 			startPoint.moveFor(x, y);
 			endPoint.moveFor(x, y);
-
 	}
 	
 	

@@ -62,11 +62,6 @@ public class Square extends SurfaceShape{
 		return new Line(selected, fillColor, topLeftPoint, 
 				new Point(topLeftPoint.getX()+side, topLeftPoint.getY()+side));
 	}
-	
-	/*public String toString(){
-		return "Top left point: "+ "("+topLeftPoint.getX()+","+topLeftPoint.getY()+") "+
-				", Side: "+ Integer.toString(side)+ ", "+ lineColorToString() + ", " + fillColorToString();
-	}*/
 
 	public Point getTopLeftPoint() {
 		return topLeftPoint;
@@ -86,7 +81,6 @@ public class Square extends SurfaceShape{
 
 	@Override
 	public void moveOn(int x, int y) {
-		// TODO Auto-generated method stub
 		if(x > 0 && y > 0){
 			movedOnX = this.topLeftPoint.getX();
 			movedOnY = this.topLeftPoint.getY();

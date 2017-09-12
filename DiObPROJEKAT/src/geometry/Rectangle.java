@@ -21,7 +21,6 @@ public class Rectangle extends Square {
 		new Line(selected, fillColor, topLeftPoint, new Point(topLeftPoint.getX(), topLeftPoint.getY()+height)).selected(g);
 		new Line(selected, fillColor, new Point(topLeftPoint.getX()+side, topLeftPoint.getY()), diagonal().getEndPoint()).selected(g);
 		new Line(selected, fillColor, new Point(topLeftPoint.getX(), topLeftPoint.getY()+height), diagonal().getEndPoint()).selected(g);
-		
 	}
 	
 	
@@ -50,18 +49,6 @@ public class Rectangle extends Square {
 		return new Line(selected, fillColor, topLeftPoint, 
 				new Point(topLeftPoint.getX()+side, topLeftPoint.getY()+height));
 	}
-
-/*	public String toString(){
-		return "Top left point: "+ "("+topLeftPoint.getX()+","+topLeftPoint.getY()+") "+
-				", Side: "+ Integer.toString(side) + ", Height: "+ Integer.toString(height) 
-				+ ", "+ lineColorToString()+ ", " + fillColorToString();
-	}
-	
-	public String txtToString(){
-		return topLeftPoint.getX()+","+topLeftPoint.getY()+","
-				 +Integer.toString(side) + ","+ Integer.toString(height) 
-				+ ","+ lineColor.getRGB()+ "," + fillColor.getRGB();
-	}*/
 
 	public int getHeight() {
 		return height;

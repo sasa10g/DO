@@ -48,8 +48,10 @@ public class SerStrategy implements Strategy{
 		model.getShapes().clear();
 		ShapeSerialization shapeDeser = new ShapeSerialization();
 		ArrayList<Shape> desserializedShapes = model.getShapes();
+		
 		shapeDeser.deserialilize(model.getShapes(), fileChooser.getSelectedFile().toString());
 		desserializedShapes = shapeDeser.deserialilize(model.getShapes(), fileChooser.getSelectedFile().toString());
+		
 		for(Shape s: desserializedShapes){
 			model.addShape(s);
 		}

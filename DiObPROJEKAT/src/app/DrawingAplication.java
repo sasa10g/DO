@@ -1,11 +1,6 @@
 package app;
 
-import java.awt.Color;
-
-
 import ctrl.Controller;
-import geometry.Circle;
-import geometry.Point;
 import gui.DrawingFrame;
 import gui.View;
 import model.Model;

@@ -2,7 +2,6 @@ package ctrl;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.io.FileFilter;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
