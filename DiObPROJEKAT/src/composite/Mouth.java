@@ -30,30 +30,7 @@ public class Mouth extends Shape implements Component {
 
 	public Mouth(Circle head){
 		this.head = head;
-		p1X = (int)(head.getCenter().getX() - head.getRadius() * p);
-		p1Y = head.getCenter().getY();
 		
-		p2X = (int)(head.getCenter().getX()- head.getRadius() / 2);
-		p2Y = (int)(head.getCenter().getY() + head.getRadius() / 2);
-		
-		p3X = (int)(head.getCenter().getX()- head.getRadius() / 2) + head.getRadius();
-		p3Y = (int)(head.getCenter().getY() + head.getRadius() / 2);
-		
-		p4X = (int)(head.getCenter().getX() + head.getRadius() * p);
-		p4Y =  head.getCenter().getY();
-		
-		startP1 = new Point(p1X, p1Y);
-		endP1StartP2 = new Point(p2X, p2Y);
-		//usta
-		endP2StartP3 = new Point(p3X, p3Y);
-		endP3 = new Point(p4X, p4Y);
-		
-		leftLine = new Line(startP1, endP1StartP2);
-		middleLine = new Line(endP1StartP2, endP2StartP3);
-		rightLine = new Line(endP2StartP3, endP3);
-		children.add(leftLine);
-		children.add(middleLine);
-		children.add(rightLine);
 		
 		
 	}
@@ -92,19 +69,18 @@ public class Mouth extends Shape implements Component {
 
 	@Override
 	public void moveOn(int x, int y) {
-		leftLine.moveOn( (int)(head.getCenter().getX() - head.getRadius()* p), head.getCenter().getY());
-		middleLine.moveOn((int)(head.getCenter().getX()- head.getRadius() / 2), 
+		children.get(0).moveOn( (int)(head.getCenter().getX() - head.getRadius()* p), head.getCenter().getY());
+		children.get(1).moveOn((int)(head.getCenter().getX()- head.getRadius() / 2), 
 				(int)(head.getCenter().getY() + head.getRadius() / 2));
-		rightLine.moveOn((int)(head.getCenter().getX()- head.getRadius() / 2)+ head.getRadius(), 
+		children.get(2).moveOn((int)(head.getCenter().getX()- head.getRadius() / 2)+ head.getRadius(), 
 				(int)(head.getCenter().getY() + head.getRadius() / 2));
 		
 	}
 
 	@Override
 	public void moveFor(int x, int y) {
-		leftLine.moveFor(x, y);
-		middleLine.getEndPoint().moveFor(x, y);
-		rightLine.getEndPoint().moveFor(x, y);
+		children.get(0).moveFor(x, y);
+		children.get(2).moveFor(x, y);
 		
 	}
 	

@@ -74,13 +74,12 @@ public class SmileyShape extends SurfaceShape implements Component {
 	@Override
 	public void moveOn(int x, int y) {
 		
-		movedOnX = head.getCenter().getX();
-		movedOnY = head.getCenter().getY();
-		head.moveOn(x, y);
-		leftEye.moveOn(head.getCenter().getX()-head.getRadius()/2, head.getCenter().getY() - head.getRadius()/2);
-		rightEye.moveOn(head.getCenter().getX()+head.getRadius()/2,head.getCenter().getY() - head.getRadius()/2);
-		mouth.moveOn(x, y);
-	
+		movedOnX = children.get(0).getCenter().getX();
+		movedOnY = children.get(0).getCenter().getY();
+		children.get(0).moveOn(x, y);
+		children.get(1).moveOn(children.get(0).getCenter().getX()-((Circle) children.get(0)).getRadius()/2, children.get(0).getCenter().getY() - ((Circle) children.get(0)).getRadius()/2);
+		children.get(2).moveOn(children.get(0).getCenter().getX()+((Circle) children.get(0)).getRadius()/2,children.get(0).getCenter().getY() - ((Circle) children.get(0)).getRadius()/2);
+		children.get(3).moveOn(x, y);
 	}
 
 
@@ -89,9 +88,7 @@ public class SmileyShape extends SurfaceShape implements Component {
 		for(Shape shape: children){
 			
 				shape.moveFor(x, y);
-			
 		}
-		
 	}
 
 
