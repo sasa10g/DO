@@ -82,10 +82,11 @@ public class Line extends Shape {
 			endPoint.moveFor(x, y);
 	}
 	
-	
 	public double size(){
 		return startPoint.distance(endPoint);
 	}
+	
+	//START GETTERS & SETTERS
 	
 	public Point getStartPoint() {
 		return startPoint;
@@ -99,5 +100,7 @@ public class Line extends Shape {
 	public void setEndPoint(Point endPoint) {
 		this.endPoint = endPoint;
 	}
+	
+	//END GETTERS & SETTERS
 
 }

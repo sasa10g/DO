@@ -20,8 +20,8 @@ public class ShapeSerialization {
 		}catch(IOException i) {
 			i.printStackTrace();
 		}
-
 	}
+	
 	//citanje
 	public ArrayList<Shape> deserialilize(ArrayList<Shape> serializableShapes, String file){
 		try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {

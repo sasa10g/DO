@@ -31,7 +31,6 @@ public class Point extends Shape {
 		if (selected) {
 			selected(g);
 		}
-
 	}
 
 	@Override
@@ -58,8 +57,7 @@ public class Point extends Shape {
 	public double distance(Point p) {
 		int dx = x-p.x;
 		int dy = y-p.y;
-		return Math.sqrt(dx * dx + dy * dy);
-		
+		return Math.sqrt(dx * dx + dy * dy);	
 	}
 	
 	@Override
@@ -69,15 +67,15 @@ public class Point extends Shape {
 		
 		this.x = x;
 		this.y = y;
-
 	}
 	
 	@Override
 	public void moveFor(int x, int y) {	
 			this.x +=x;
-			this.y +=y;
-			
+			this.y +=y;		
 	}
+	
+	//START GETTERS & SETTERS
 	
 	public int getX() {
 		return x;
@@ -95,4 +93,6 @@ public class Point extends Shape {
 		this.y = y;
 	}
 
+	//END GETTERS & SETTERS
+	
 }

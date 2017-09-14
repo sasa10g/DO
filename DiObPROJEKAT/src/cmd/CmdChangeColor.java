@@ -16,7 +16,6 @@ public class CmdChangeColor implements Command{
 	
 	
 	public CmdChangeColor(){
-		
 	}
 	
 	public CmdChangeColor(Model model){
@@ -32,8 +31,6 @@ public class CmdChangeColor implements Command{
 		dialog.setVisible(true);// setting visible dialog
 	}
 	
-	
-
 
 	public String getCommand() {
 		return command;
@@ -51,7 +48,6 @@ for(Shape shape: shapesForChangeColor){
 			
 			if(dialog.getLineColor() == null){
 				dialog.setLineColor(shape.getLineColor());
-				
 			}
 			
 			if(dialog.getLineColor() != shape.getLineColor()){
@@ -65,8 +61,6 @@ for(Shape shape: shapesForChangeColor){
 				shape.getChangedLineColorList().add(shape.getLineColor());
 			}
 			
-			
-			
 			if(shape instanceof SurfaceShape){
 				if(dialog.getFillColor() == null){
 					dialog.setFillColor(((SurfaceShape) shape).getFillColor());
@@ -79,11 +73,7 @@ for(Shape shape: shapesForChangeColor){
 				else{
 					((SurfaceShape) shape).getChangeFillColorList().add(((SurfaceShape) shape).getFillColor());
 				}
-				
-				
-				
 			}
-		
 		}
 		model.getSelectedShapes().clear();
 	}
@@ -95,16 +85,12 @@ for(Shape shape: shapesForChangeColor){
 			shape.setLineColor(shape.getChangedLineColorList().get(shape.getChangedLineColorList().size()-1));
 			shape.getChangedLineColorList().remove(shape.getChangedLineColorList().size()-1);
 			
-			
 			if(shape instanceof SurfaceShape){
 				((SurfaceShape) shape).setFillColor(((SurfaceShape) shape).getChangeFillColorList()
 						.get(((SurfaceShape) shape).getChangeFillColorList().size()-1));
 				((SurfaceShape) shape).getChangeFillColorList().remove(((SurfaceShape) shape).getChangeFillColorList().size()-1);
-				
-			}
-			
-		}
-		
+			}		
+		}	
 	}
 
 	public Model getModel() {
@@ -130,6 +116,4 @@ for(Shape shape: shapesForChangeColor){
 	public void setDialog(DlgChangeColor dialog) {
 		this.dialog = dialog;
 	}
-	
-	
 }

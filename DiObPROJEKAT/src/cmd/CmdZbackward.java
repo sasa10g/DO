@@ -19,8 +19,6 @@ public class CmdZbackward implements Command {
 		shapesForZOrder =  new ArrayList<Shape>(model.getSelectedShapes());
 	}
 
-	
-	
 	@Override
 	public void execute() {
 		model.getShapes().removeAll(shapesForZOrder);
@@ -29,9 +27,7 @@ public class CmdZbackward implements Command {
 				shape.setIndex(shape.getIndex()+1);
 			}		
 		}
-		
 		model.addListShapeIndexOf(shapesForZOrder);
-		
 	}
 
 	@Override
@@ -39,10 +35,8 @@ public class CmdZbackward implements Command {
 		model.getShapes().removeAll(shapesForZOrder);
 		for(Shape shape: shapesForZOrder){
 			shape.setIndex(shape.getIndex()-1);
-			
 		}
-		model.addListShapeIndexOf(shapesForZOrder);
-		
+		model.addListShapeIndexOf(shapesForZOrder);	
 	}
 
 	public Model getModel() {
@@ -60,7 +54,4 @@ public class CmdZbackward implements Command {
 	public void setShapesForZOrder(ArrayList<Shape> shapesForZOrder) {
 		this.shapesForZOrder = shapesForZOrder;
 	}
-	
-	
-	
 }

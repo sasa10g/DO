@@ -50,6 +50,8 @@ public class Rectangle extends Square {
 				new Point(topLeftPoint.getX()+side, topLeftPoint.getY()+height));
 	}
 
+	//START GETTERS & SETTERS
+	
 	public int getHeight() {
 		return height;
 	}
@@ -58,5 +60,6 @@ public class Rectangle extends Square {
 		this.height = height;
 	}
 	
+	//END GETTERS & SETTERS
 	
 }

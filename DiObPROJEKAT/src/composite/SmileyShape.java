@@ -23,7 +23,6 @@ public class SmileyShape extends SurfaceShape implements Component {
 	
 	public SmileyShape(ArrayList<Shape> children){		
 		this.children = children;
-			
 	}
 	
 	public void add(Shape s) {
@@ -33,10 +32,7 @@ public class SmileyShape extends SurfaceShape implements Component {
 	@Override
 	public void remove(Shape s) {
 		children.remove(s);
-
 	}
-	
-	
 	
 	@Override
 	public void draw(Graphics g) {
@@ -45,8 +41,7 @@ public class SmileyShape extends SurfaceShape implements Component {
 			if(selected){
 				selected(g);
 			}
-		}
-		
+		}	
 	}
 
 	@Override
@@ -57,19 +52,15 @@ public class SmileyShape extends SurfaceShape implements Component {
 		return false;
 	}
 	
-	
 	public void selected(Graphics g) {
 		for(Shape selectedShape: children){
 			selectedShape.selected(g);
 		}
-		
 	}
-
 	
 	public String toString(){
 		return head.toString();
 	}
-
 
 	@Override
 	public void moveOn(int x, int y) {

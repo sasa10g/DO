@@ -34,12 +34,12 @@ public class Circle extends SurfaceShape {
 			g.setColor(Color.BLUE);
 			g.drawRect(center.getX()-radius-3, center.getY()-3, 5, 5);
 			g.drawRect(center.getX()+radius-3, center.getY()-3, 5, 5);
-			g.drawRect(center.getX(), center.getY()-radius-2, 5, 5);
-			g.drawRect(center.getX(), center.getY()+radius+3, 5, 5);
+			g.drawRect(center.getX(), center.getY()-radius-3, 5, 5);
+			g.drawRect(center.getX(), center.getY()+radius-3, 5, 5);
 		}
-		if (selected) {
+		/*if (selected) {
 			selected(g);
-		}
+		}*/
 
 	}
 
@@ -81,6 +81,7 @@ public class Circle extends SurfaceShape {
 			center.moveFor(x, y);
 	}
 	
+	//START GETTERS & SETTERS
 		
 	public Point getCenter() {
 		return center;
@@ -98,4 +99,5 @@ public class Circle extends SurfaceShape {
 		this.radius = radius;
 	}
 
+	//END GETTERS & SETTERS
 }

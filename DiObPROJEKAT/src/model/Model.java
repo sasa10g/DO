@@ -8,7 +8,6 @@ public class Model {
 	
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
 	private ArrayList<Shape> selectedShapes = new ArrayList<Shape>(); 
-	private ArrayList<String> textLog = new ArrayList<>();
 	private int id = 0;
 	
 	public ArrayList<Shape> getSelectedShapes() {
@@ -17,15 +16,6 @@ public class Model {
 
 	
 	// START SELEKCIJA
-	
-	public ArrayList<String> getTextLog() {
-		return textLog;
-	}
-
-
-	public void setTextLog(ArrayList<String> textLog) {
-		this.textLog = textLog;
-	}
 
 
 	public void setSelectedShapes(ArrayList<Shape> selectedShapes) {
@@ -77,12 +67,10 @@ public class Model {
 				if(shape.getId() == s.getId() && !shape.equals(s)){
 					shape.setId(id++);
 					settingId(shape);
-					
 				}
 			}
 		}
-		shape.setIndexed(true);
-		
+		shape.setIndexed(true);	
 	}
 	
 	
@@ -117,7 +105,4 @@ public class Model {
 	public void setShapes(ArrayList<Shape> shapes) {
 		this.shapes = shapes;
 	}
-	
-	
-
 }

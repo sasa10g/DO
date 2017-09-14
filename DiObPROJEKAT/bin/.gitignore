@@ -1,11 +1,5 @@
-/geometry/
-/dialog/
-/ctrl/
 /gui/
-/app/
+/ctrl/
 /composite/
 /model/
-/cmd/
-/strategy/
-/serialization/
-/org/
+/geometry/

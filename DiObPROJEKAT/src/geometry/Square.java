@@ -11,15 +11,14 @@ public class Square extends SurfaceShape{
 	protected Point topLeftPoint;
 	protected int side;
 	
-	public Square(){}
+	public Square(){
+	}
 	
 	public Square(boolean selected, Color lineColor, Color fillColor, 
 			Point topLeftPoint, int side){
 		super(selected, lineColor, fillColor);
 		this.topLeftPoint = topLeftPoint;
 		this.side = side;
-		
-		
 	}
 
 	public double getArea() {
@@ -34,8 +33,6 @@ public class Square extends SurfaceShape{
 		new Line(selected, fillColor, topLeftPoint, new Point(topLeftPoint.getX(), topLeftPoint.getY()+side)).selected(g);
 		new Line(selected, fillColor, new Point(topLeftPoint.getX()+side, topLeftPoint.getY()), diagonal().getEndPoint()).selected(g);
 		new Line(selected, fillColor, new Point(topLeftPoint.getX(), topLeftPoint.getY()+side), diagonal().getEndPoint()).selected(g);
-		
-		
 	}
 	
 	public void draw(Graphics g) {
@@ -45,7 +42,6 @@ public class Square extends SurfaceShape{
 		g.drawRect(topLeftPoint.getX(), topLeftPoint.getY(), side, side);
 		if(selected)
 			selected(g);
-
 	}
 	
 	
@@ -90,17 +86,10 @@ public class Square extends SurfaceShape{
 		else
 			JOptionPane.showMessageDialog(null, "Invalid function", "Error",
 					JOptionPane.ERROR_MESSAGE);
-
 	}
 
 	@Override
 	public void moveFor(int x, int y) {
-		
 			topLeftPoint.moveFor(x, y);
-	
 	}
-
-
-	
-
 }

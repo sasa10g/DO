@@ -13,7 +13,6 @@ public class CmdMode implements Command{
 	private DlgMove dialog;
 	
 	public CmdMode(){
-		
 	}
 	
 	public CmdMode(Model model){
@@ -36,7 +35,6 @@ public class CmdMode implements Command{
 				shape.moveOn(Integer.parseInt(dialog.getxMod()), Integer.parseInt(dialog.getyMod()));
 			}
 		}
-		
 	}
 
 	@Override
@@ -50,7 +48,6 @@ public class CmdMode implements Command{
 				shape.moveOn(shape.getMovedOnX(), shape.getMovedOnY());
 			}
 		}
-		
 	}
 
 	public Model getModel() {
@@ -76,9 +73,4 @@ public class CmdMode implements Command{
 	public void setDialog(DlgMove dialog) {
 		this.dialog = dialog;
 	}
-	
-	
-	
-	
-	
 }

@@ -90,6 +90,7 @@ public class DrawingFrame extends JFrame {
 		
 		btnUndo = new JButton("Undo");
 		btnUndo.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/undo.png"));
+		//btnUndo.setEnabled(false);
 		btnUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.undo();
@@ -253,7 +254,6 @@ public class DrawingFrame extends JFrame {
 		tglbtnSelection.setIcon(new ImageIcon("/Users/sasa10/git/DiObPROJEKAT/icon/shapes/selection.png"));
 		tglbtnSelection.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//controller.enableModificationBtns();
 				controller.setEndPoint(null);
 				controller.setStartPoint(null);
 				controller.getView().repaint();

@@ -10,10 +10,7 @@ public class CmdZforward implements Command {
 	private Model model;
 	private ArrayList<Shape> shapesForZOrder;
 	
-	
-	
 	public CmdZforward(){
-		
 	}
 	
 	public CmdZforward(Model model) {
@@ -21,9 +18,6 @@ public class CmdZforward implements Command {
 		shapesForZOrder =  new ArrayList<Shape>(model.getSelectedShapes());
 	}
 
-	
-	
-	
 	
 	@Override
 	public void execute() {
@@ -44,10 +38,8 @@ public class CmdZforward implements Command {
 		model.getShapes().removeAll(shapesForZOrder);
 		for(Shape shape: shapesForZOrder){
 			shape.setIndex(shape.getIndex()+1);
-			
 		}
 		model.addListShapeIndexOf(shapesForZOrder);
-		
 	}
 
 	public Model getModel() {
@@ -65,5 +57,4 @@ public class CmdZforward implements Command {
 	public void setShapesForZOrder(ArrayList<Shape> shapesForZOrder) {
 		this.shapesForZOrder = shapesForZOrder;
 	}
-	
 }

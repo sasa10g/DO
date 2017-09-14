@@ -43,37 +43,17 @@ public class Controller {
 	private JFileChooser fileChooser = new JFileChooser();
 	private FileNameExtensionFilter serFilter = new FileNameExtensionFilter("Serializable file", "ser");
 	private int onClick;
-	
 	private Point startPoint, endPoint;
+	
+	private ArrayList<Command> commandsList = new ArrayList(); //lista komandi
+	private ArrayList<Command> undoCommands = new ArrayList(); //lista unduo komandi
 	
 	public Controller(){
 		fileChooser.addChoosableFileFilter((javax.swing.filechooser.FileFilter) serFilter);
 	}
-	
-	public Point getStartPoint() {
-		return startPoint;
-	}
 
-	public void setStartPoint(Point startPoint) {
-		this.startPoint = startPoint;
-	}
-
-	public Point getEndPoint() {
-		return endPoint;
-	}
-
-	public void setEndPoint(Point endPoint) {
-		this.endPoint = endPoint;
-	}
-
-	private ArrayList<Command> commandsList = new ArrayList(); //lista komandi redoslijedom
-	private ArrayList<Command> undoCommands = new ArrayList(); //lista unduo komandi
-	
-
-	
 	
 	public void drawShapes(int x, int y){
-		
 		if(frame.getTglbtnSelection().isSelected()){
 			
 			for(Shape shape: model.getShapes()){
@@ -81,7 +61,6 @@ public class Controller {
 					if(!view.isCtrlPressed()){//if ctrl is pressed
 
 						selectedShape(shape);// adding to selected shapes list
-
 					}
 					else{
 						if(shape.isSelected()){// if ctrl is pressed and shape is selected
@@ -93,16 +72,13 @@ public class Controller {
 							model.addShapeToSelection(shape);// adding to  selectd shapes list
 						}
 					}
-
 				}
-
 				else if(!view.isCtrlPressed()){// if not clicked on shape area and ctrl is not pressed
 
 					model.removeShapeFromSelection(shape);// removing from selected shapes list
 				}				
 			}
 			view.repaint();
-			
 		}
 		
 		else if(frame.getTglbtnPoint().isSelected()){
@@ -161,7 +137,6 @@ public class Controller {
 				Rectangle r = new Rectangle(false, frame.getLineColor(), frame.getFillColor(), p, side, heightr);
 				AddCommand aCmd = new AddCommand(model, r);
 				doCommand(aCmd);
-			
 			}
 		}
 		
@@ -189,10 +164,8 @@ public class Controller {
 
 				initializigSmiley(smiley, head);
 
-
 				AddCommand aCmd = new AddCommand(model, smiley);// initializing command
 				doCommand(aCmd);
-
 			}
 		}
 	}
@@ -217,16 +190,16 @@ public class Controller {
 
 		Point rightEye = new Point(false, frame.getLineColor(),rightEyeX, rightEyeY); // initializing right eye
 
-		double p = 0.7;
+		double p = 0.5;
 
 		int p1X = (int)(head.getCenter().getX() - head.getRadius() * p);// 
 		int p1Y = head.getCenter().getY();
 
 		int p2X = (int)(head.getCenter().getX()- head.getRadius() / 2);
-		int p2Y = (int)(head.getCenter().getY() + head.getRadius() / 2);
+		int p2Y = (int)(head.getCenter().getY() + head.getRadius() / 3);
 
 		int p3X = (int)(head.getCenter().getX()- head.getRadius() / 2) + head.getRadius();
-		int p3Y = (int)(head.getCenter().getY() + head.getRadius() / 2);
+		int p3Y = (int)(head.getCenter().getY() + head.getRadius() / 3);
 
 		int p4X = (int)(head.getCenter().getX() + head.getRadius() * p);
 		int p4Y =  head.getCenter().getY();
@@ -239,6 +212,7 @@ public class Controller {
 		Line leftLine = new Line(false, frame.getLineColor(), startP1, endP1StartP2);// initializing left line of mouth
 		Line middleLine = new Line(false, frame.getLineColor(),endP1StartP2, endP2StartP3);// initializing middle line of mouth
 		Line rightLine = new Line(false, frame.getLineColor(),endP2StartP3, endP3);// initializing right line of mouth
+		
 		Mouth mouth = new Mouth(head);// initalizing mouth
 		mouth.add(leftLine);
 		mouth.add(middleLine);
@@ -247,7 +221,6 @@ public class Controller {
 		smiley.add(leftEye);
 		smiley.add(rightEye);
 		smiley.add(mouth);
-
 	}
 	
 	
@@ -256,6 +229,7 @@ public class Controller {
 		c.execute();
 		view.repaint();
 	}
+	
 	
 	public void undo(){
 		Command c = commandsList.get(commandsList.size()-1);
@@ -273,6 +247,7 @@ public class Controller {
 		view.repaint();
 	}
 	
+	
 	public void keyPressed(int x, int y, int modifiers){// check if ctrl key is pressed
 
 		if((modifiers & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK){
@@ -280,7 +255,6 @@ public class Controller {
 		}
 		else
 			view.setCtrlPressed(false);
-
 	}
 	
 	
@@ -290,7 +264,6 @@ public class Controller {
 			if(s.isSelected()){
 				localShapes.add(s);
 			}
-			
 		}
 		model.removeListShapeToSelection(localShapes);
 		model.addShapeToSelection(shape);
@@ -303,7 +276,6 @@ public class Controller {
 		if (delete == JOptionPane.YES_OPTION){
 			CmdDelete cmdDelete = new CmdDelete(model);
 			doCommand(cmdDelete);
-			
 		}
 	}
 	
@@ -315,7 +287,6 @@ public class Controller {
 			doCommand(cmdMove);
 			view.repaint();
 		}		
-
 	}
 	
 	
@@ -323,9 +294,7 @@ public class Controller {
 		CmdChangeColor cmdChangeColor = new CmdChangeColor(model);// initializing command					
 		if(cmdChangeColor.getDialog().isSucssess()){// if all input is valid
 			doCommand(cmdChangeColor);
-
 		}
-
 	}
 	
 	
@@ -334,39 +303,11 @@ public class Controller {
 		doCommand(cmdZbackward);
 	}
 
+	
 	public void zForward(){ // moving shape forward x axis
 		CmdZforward cmdZbackward = new CmdZforward(model);// initalizing command
 		doCommand(cmdZbackward);
 	}
-	
-	
-	public void enableBtnsZord(){
-
-		if(model.getSelectedShapes().size() == 1 && model.getShapes().size() > 1){
-			//if only one shape is selected and if there are at least two shapes drown
-
-
-			if(model.getShapes().get(0).isSelected()){// if first drawned shape is selected
-				frame.getBtnZforward().setEnabled(false);// disable button z-forward
-			}
-			else{
-				frame.getBtnZforward().setEnabled(true);// enable button z-forward
-			}
-			if(model.getShapes().get(model.getShapes().size()-1).isSelected()){
-				//if last drawned shape is selected
-				frame.getBtnZbackward().setEnabled(false);// disable button z-backward
-			}
-			else{
-				frame.getBtnZbackward().setEnabled(true);// enable button z-backward
-			}
-
-		}
-		else{
-			frame.getBtnZforward().setEnabled(false);// disable z-forward button
-			frame.getBtnZbackward().setEnabled(false);// disable z-backward button
-		}
-	}
-	
 	
 	
 	public void save(){// save drawing
@@ -383,8 +324,9 @@ public class Controller {
 			}
 		}
 	}
+	
 
-	public void load(){// open file
+	public void load(){// open drawing file
 
 		ContextStrategy context = new ContextStrategy();
 		fileChooser.setFileFilter(fileChooser.getAcceptAllFileFilter());
@@ -399,49 +341,41 @@ public class Controller {
 					
 					context.setStrategy(new SerStrategy(model, fileChooser));
 					context.LoadContext();// open serializable file
-
-
 				}
-				
-				
 			}
 		}
-
-
 	}
-	
-	
-	public void enableModificationBtns(){// enables buttons
-		if(model.getSelectedShapes().size() > 0){// if there are selected shapes
-			frame.getBtnMode().setEnabled(true);// enable modification button
-			frame.getBtnChangeColor().setEnabled(true);// enable button for change color
-			frame.getBtnDelete().setEnabled(true);// enable delete button
-			frame.getBtnLineColor().setEnabled(false);
-			frame.getBtnFillColor().setEnabled(false);
-		}
-		else{
-			frame.getBtnMode().setEnabled(false);// disable modification button
-			frame.getBtnChangeColor().setEnabled(false);// disable button for change color
-			frame.getBtnDelete().setEnabled(false);// disable delete button
-			frame.getBtnLineColor().setEnabled(true);
-			frame.getBtnFillColor().setEnabled(true);
-		}
-
-	}
-	
 	
 	
 	// START GETTERS & SETTERS
 	
+	public Point getStartPoint() {
+		return startPoint;
+	}
+
+	public void setStartPoint(Point startPoint) {
+		this.startPoint = startPoint;
+	}
+
+	public Point getEndPoint() {
+		return endPoint;
+	}
+
+	public void setEndPoint(Point endPoint) {
+		this.endPoint = endPoint;
+	}
+	
 	public Model getModel() {
 		return model;
 	}
+	
 	public void setModel(Model model) {
 		this.model = model;
 		if(view != null){
 			this.view.setModel(model);
 		}
 	}
+	
 	public View getView() {
 		return view;
 	}
@@ -449,7 +383,6 @@ public class Controller {
 		this.view = view;
 		view.setController(this);
 	}
-	
 	
 	public DrawingFrame getFrame() {
 		return frame;

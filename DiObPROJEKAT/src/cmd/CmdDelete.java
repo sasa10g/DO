@@ -10,9 +10,7 @@ public class CmdDelete implements Command {
 	private Model model;
 	private ArrayList<Shape> shapesForDelete;
 	
-	
 	public CmdDelete() {
-		
 	}
 	
 	public CmdDelete(Model model){
@@ -28,7 +26,5 @@ public class CmdDelete implements Command {
 	@Override
 	public void unExecute() {
 		model.getShapes().addAll(shapesForDelete);
-		
 	}
-
 }

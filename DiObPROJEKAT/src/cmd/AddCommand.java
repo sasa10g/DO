@@ -14,20 +14,16 @@ public class AddCommand implements Command {
 	}
 	
 	public AddCommand(){
-		//konstruktor
+		//konstr
 	}
-	
 	
 	@Override
 	public void execute() {
 		model.AddShape(shape);
-		
 	}
 
 	@Override
 	public void unExecute() {
 		model.RemoveShape(shape);
-		
 	}
-
 }

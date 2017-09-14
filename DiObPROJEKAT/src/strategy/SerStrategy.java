@@ -25,7 +25,6 @@ public class SerStrategy implements Strategy{
 	@Override
 	public void save() {
 		
-		
 		file=new File(fileChooser.getSelectedFile().toString());
 		if(file.getAbsolutePath().toString().endsWith(".ser")) {  
 
@@ -37,13 +36,12 @@ public class SerStrategy implements Strategy{
 		}
 					
 		ShapeSerialization shapeSer = new ShapeSerialization();
-		shapeSer.serialize(model.getShapes(), file.toString());
-			
-				
+		shapeSer.serialize(model.getShapes(), file.toString());				
 	}
 
 	@Override
 	public void load() {
+		
 		//deserializacija, cita sve oblike i dodaje ih
 		model.getShapes().clear();
 		ShapeSerialization shapeDeser = new ShapeSerialization();
@@ -55,9 +53,5 @@ public class SerStrategy implements Strategy{
 		for(Shape s: desserializedShapes){
 			model.addShape(s);
 		}
-		
-	      
-		
 	}
-
 }

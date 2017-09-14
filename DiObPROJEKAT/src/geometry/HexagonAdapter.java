@@ -10,7 +10,6 @@ public class HexagonAdapter extends SurfaceShape{
 	
 
 	public HexagonAdapter(){
-		
 	}
 	
 	public HexagonAdapter(boolean selected, Color lineColor, Color fillColor, Point p, int radius){
@@ -23,7 +22,7 @@ public class HexagonAdapter extends SurfaceShape{
 	
 	@Override
 	public double getArea() { //povrsina, nije potrebno
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 
@@ -40,7 +39,6 @@ public class HexagonAdapter extends SurfaceShape{
 	public boolean contains(int x, int y) {
 		return hexagon.doesContain(x, y);
 	}
-	
 	
 	public int getX() {
 		return hexagon.getX();
@@ -60,7 +58,6 @@ public class HexagonAdapter extends SurfaceShape{
 
 	@Override
 	public void selected(Graphics g) { //hexakog ima svoju metodu za slekeciju
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -68,16 +65,15 @@ public class HexagonAdapter extends SurfaceShape{
 	public void moveFor(int x, int y) {
 		hexagon.setX(hexagon.getX()+x);
 		hexagon.setY(hexagon.getY()+y);
-		
 	}
 
 	@Override
 	public void moveOn(int x, int y) {
 		hexagon.setX(x);
 		hexagon.setY(y);
-		
 	}
 	
+	//START GETTERS & SETTERS
 	
 	public Color getLineColor(){
 		return hexagon.getBorderColor();
@@ -94,5 +90,7 @@ public class HexagonAdapter extends SurfaceShape{
 	public void setFillColor(Color fillColor){
 		hexagon.setAreaColor(fillColor);
 	}
+	
+	//END GETTERS & SETTERS
 	
 }
